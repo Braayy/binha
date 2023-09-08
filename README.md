@@ -5,7 +5,9 @@ bun + rinha, Minha implementação de interpretador de rinha para o [rinha de co
 
 ### Construindo a imagem
 
-`docker build -t binha:1.0.0 .`
+1. `git clone https://github.com/Braayy/binha.git`
+2. `cd binha`
+3. `docker build -t binha:1.0.0 .`
 
 ### Executando em um container
 
