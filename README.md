@@ -1,5 +1,5 @@
 # binha
-bun + rinha, Minha implementação de interpretador de rinha para o rinha de compiladores
+bun + rinha, Minha implementação de interpretador de rinha para o [rinha de compiladores](https://github.com/aripiprazole/rinha-de-compiler)
 
 ## Executando com Docker
 
