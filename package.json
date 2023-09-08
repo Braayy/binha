@@ -1,0 +1,19 @@
+{
+  "name": "rinha-de-compiladores",
+  "version": "1.0.0",
+  "description": "Minha implementação do interpretador para a Rinha de Compiladores",
+  "module": "src/index.ts",
+  "scripts": {
+    "watch": "nodemon",
+    "start": "bun src/index.ts",
+    "repl": "bun src/index.ts -"
+  },
+  "keywords": [],
+  "author": "Brayan Gomes",
+  "license": "MIT",
+  "devDependencies": {
+    "bun-types": "^0.8.1",
+    "typescript": "^5.2.2",
+    "nodemon": "^3.0.1"
+  }
+}

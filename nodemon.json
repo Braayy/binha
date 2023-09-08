@@ -1,0 +1,15 @@
+{
+  "watch": ["src", "programs"],
+  "ext": ".ts,.rinha",
+  "ignore": [],
+  "exec": "bun ./src/index.ts $RINHA_AST_FILE",
+  "events": {
+    "start": "\"$RINHA_PARSER\" $RINHA_SRC_FILE > $RINHA_AST_FILE",
+    "restart": "\"$RINHA_PARSER\" $RINHA_SRC_FILE > $RINHA_AST_FILE"
+  },
+  "env": {
+    "RINHA_SRC_FILE": "programs/main.rinha",
+    "RINHA_AST_FILE": "programs/main.rinha_ast",
+    "RINHA_PARSER": "./rinha"
+  }
+}
