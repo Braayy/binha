@@ -84,5 +84,14 @@ if (astFilename === '-') {
 
   const ast = await astFile.json() as File;
 
+  const startTime = performance.now();
+  const startMemoryUsage = process.memoryUsage();
+
   run(ast.expression);
+  
+  const elapsedTime = performance.now() - startTime;
+  const usedMemory = process.memoryUsage(startMemoryUsage).heapUsed;
+
+  console.log(`\nElapsed Time: ${elapsedTime.toFixed(2)} ms`);
+  console.log(`Used Memory: ${(usedMemory / 1024).toFixed(2)} kB`);
 }
