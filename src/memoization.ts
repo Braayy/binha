@@ -85,12 +85,11 @@ export default class Memoization {
   public memoizeResult(func: Function, args: Array<Value>, result: Value) {
     const memoizedResult = new MemoizedResult(func, args, result);
 
-    const has = this.memoizedResults.some((alreadyMemoizedResult) => alreadyMemoizedResult.isEqual(memoizedResult));
+    const alreadyMemoized = this.memoizedResults.some((alreadyMemoizedResult) => alreadyMemoizedResult.isEqual(memoizedResult));
 
-    if (has)
-      return;
-
-    this.memoizedResults.push(memoizedResult);
+    if (!alreadyMemoized) {
+      this.memoizedResults.push(memoizedResult);
+    }
   }
 
   public getMemoizedResult(func: Function, args: Array<Value>): Value | undefined {
