@@ -144,10 +144,10 @@ export function evaluate(expression: Term, scope: Scope, memoization: Memoizatio
 
 export function valueToString(term: Value): string {
   switch (term.kind) {
-    case 'Int': return String(term.value);
-    case 'Str': return `"${term.value}"`;
+    case 'Int':
+    case 'Str':
     case 'Bool': return String(term.value);
-    case 'Function': return `fn(${term.parameters.map((p) => p.text).join(', ')})`;
+    case 'Function': return `<#closure>`;
     case 'Tuple': return `(${valueToString(term.first as Value)},${valueToString(term.second as Value)})`;
   }
 }
