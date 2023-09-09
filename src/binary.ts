@@ -34,7 +34,7 @@ export function binary(lhs: Value, rhs: Value, operation: BinaryOperation): Valu
 
 function add(lhs: Value, rhs: Value): Int | Str {
   if (lhs.kind === 'Int' && rhs.kind === 'Int') {
-    const value = lhs.value + rhs.value;
+    const value = Int32(lhs.value + rhs.value);
 
     return {
       kind: 'Int',
@@ -68,7 +68,7 @@ function sub(lhs: Value, rhs: Value): Int {
   if (lhs.kind !== 'Int' || rhs.kind !== 'Int')
     binaryOperationNotValid(lhs, rhs, 'Sub');
 
-  const value = lhs.value - rhs.value;
+  const value = Int32(lhs.value - rhs.value);
 
   return {
     kind: 'Int',
@@ -85,7 +85,7 @@ function mul(lhs: Value, rhs: Value): Int {
   if (lhs.kind !== 'Int' || rhs.kind !== 'Int')
     binaryOperationNotValid(lhs, rhs, 'Mul');
 
-  const value = lhs.value * rhs.value;
+  const value = Int32(lhs.value * rhs.value);
 
   return {
     kind: 'Int',
@@ -104,7 +104,7 @@ function div(lhs: Value, rhs: Value): Int {
   
   assertIntIsNotZero(rhs);
 
-  const value = Math.floor(lhs.value / rhs.value);
+  const value = Int32(Math.floor(lhs.value / rhs.value));
 
   return {
     kind: 'Int',
@@ -123,7 +123,7 @@ function rem(lhs: Value, rhs: Value): Int {
 
   assertIntIsNotZero(rhs);
 
-  const value = lhs.value % rhs.value;
+  const value = Int32(lhs.value % rhs.value);
 
   return {
     kind: 'Int',
@@ -270,4 +270,8 @@ function or(lhs: Value, rhs: Value): Bool {
       filename: lhs.location.filename
     }
   }
+}
+
+function Int32(n: number): number {
+  return n & 0xFFFFFFFF;
 }
