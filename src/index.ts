@@ -5,6 +5,7 @@ import Scope from './scope';
 import { assertValue } from './error';
 import { evaluate, valueToString } from './evalutation';
 import fixReplLocation from './replLocationFixer';
+import Memoization from './memoization';
 
 async function parseExpression(code: string): Promise<Term> {
   const tempfile = '.tempfile.rinha';
@@ -34,9 +35,10 @@ async function parseExpression(code: string): Promise<Term> {
 
 function run(expression: Term): Term {
   const scope = new Scope();
+  const memoization = new Memoization();
 
   try {
-    return evaluate(expression, scope);
+    return evaluate(expression, scope, memoization);
   } catch (error) {
     console.error(error);
 

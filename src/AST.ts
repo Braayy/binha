@@ -52,7 +52,7 @@ export interface Bool {
 
 export interface Int {
   kind: 'Int';
-  value: number;
+  value: bigint | number;
   location: Location;
 }
 
