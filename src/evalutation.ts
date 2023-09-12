@@ -8,15 +8,9 @@ export function evaluate(expression: Term, scope: Scope, memoization: Memoizatio
   switch (expression.kind) {
     case 'Str':
     case 'Bool':
+    case 'Int':
     case 'Function':
       return expression;
-    case 'Int': {
-      return {
-        kind: 'Int',
-        value: expression.value & 0xFFFFFFFF,
-        location: expression.location,
-      };
-    }
 
     case 'Binary': {
       const lhs = evaluate(expression.lhs, scope, memoization);
